@@ -1,28 +1,33 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Products</h1>
-<table class="table">
-    <thead>
-        <tr>
-            <th>Name</th>
-            <th>Tag</th>
-            <th>Price</th>
-            <th>Image</th>
-        </tr>
-    </thead>
-    <tbody>
-        {% for product in products %}
-        <tr>
-            <td>{{ product.name }}</td>
-            <td>{{ product.tag }}</td>
-            <td>{{ product.price }}</td>
-           <td><img src=" static/images/{{ product.image_path }}" alt="{{ product.name }}" style="width: 100px;"></td>
-        </tr>
-        {% endfor %}
-    </tbody>
-</table>
+<div class="container my-5">
+    <h1 class="text-center mb-4">Products</h1>
+    <table class="table table-striped table-hover">
+        <thead class="thead-dark">
+            <tr>
+                <th>Name</th>
+                <th>Tag</th>
+                <th>Price</th>
+                <th>Image</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for product in products %}
+            <tr>
+                <td>{{ product.name }}</td>
+                <td>{{ product.tag }}</td>
+                <td>${{ product.price }}</td>
+                <td>
+                    <img src="{{ url_for('static', filename='images/' +'soliman-cifuentes-mhad_4H6S14-unsplash.jpg' ) }}" alt="{{ product.name }}" class="img-thumbnail" style="width: 100px;">
+                </td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="4" class="text-center">No products available.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
 {% endblock %}
-
-
-

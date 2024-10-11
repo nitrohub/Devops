@@ -1,7 +1,42 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Welcome to Our Store</h1>
-<p>Explore our products and find what you love!</p>
-{% endblock %}
+<div class="text-center my-5">
+    <h1 class="display-4">Welcome to Our Store</h1>
+    <p class="lead">Explore our products and find what you love!</p>
+    <a href="/products" class="btn btn-primary btn-lg">Browse Products</a>
+</div>
 
+<div class="row my-5">
+    <div class="col-md-4">
+        <div class="card">
+            <img src="{{ url_for('static', filename='images/soliman-cifuentes-mhad_4H6S14-unsplash.jpg') }}" class="card-img-top" alt="Sample Product 1">
+            <div class="card-body">
+                <h5 class="card-title">Beers</h5>
+                <p class="card-text">Brief description of the product goes here.</p>
+                <a href="/products" class="btn btn-secondary">View Details</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <img src="{{ url_for('static', filename='images/chris-anderson-qXvd9kAL2Qs-unsplash.jpg') }}" class="card-img-top" alt="Sample Product 2">
+            <div class="card-body">
+                <h5 class="card-title">Vape</h5>
+                <p class="card-text">Brief description of the product goes here.</p>
+                <a href="/products" class="btn btn-secondary">View Details</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card">
+            <img src="{{ url_for('static', filename='images/dushawn-jovic-TfTJf6NKoSM-unsplash.jpg') }}" class="card-img-top" alt="Sample Product 3">
+            <div class="card-body">
+                <h5 class="card-title">Burrito</h5>
+                <p class="card-text">Brief description of the product goes here.</p>
+                <a href="/products" class="btn btn-secondary">View Details</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
