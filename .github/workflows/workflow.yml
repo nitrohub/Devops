@@ -28,4 +28,4 @@ jobs:
           MONGODB_PASSWORD: ${{ secrets.MONGODB_PASSWORD }}
           SECRET_KEY: ${{ secrets.SECRET_KEY }}
         run: |
-          python your_application.py
+          python app.py
