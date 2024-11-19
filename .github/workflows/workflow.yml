@@ -4,28 +4,39 @@ on:
   push:
     branches:
       - main
+  pull_request:
+    branches:
+      - main
 
 jobs:
   build:
     runs-on: ubuntu-latest
+    
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
-      
+
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
           python-version: '3.8'
-      
+
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
           pip install python-dotenv
-      
-      - name: Run your application
+
+      - name: Set up MongoDB
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y mongodb
+          sudo service mongodb start
+        continue-on-error: true  # Allow the pipeline to continue even if MongoDB isn't pre-installed
+
+      - name: Run tests
         env:
           MONGODB_USERNAME: ${{ secrets.MONGODB_USERNAME }}
           MONGODB_PASSWORD: ${{ secrets.MONGODB_PASSWORD }}
           SECRET_KEY: ${{ secrets.SECRET_KEY }}
         run: |
-          python app.py
+          python -m unittest discover tests  # Run all tests in the 'tests' directory
