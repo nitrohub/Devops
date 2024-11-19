@@ -1,4 +1,10 @@
 import unittest
+import sys
+import os
+
+# Add the parent directory to sys.path
+sys.path.append(os.path.dirname(os.path.abspath(os.path.dirname(__file__))))
+
 from app import db
 
 class MongoDBWriteTest(unittest.TestCase):
